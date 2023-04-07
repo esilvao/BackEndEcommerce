@@ -1,11 +1,12 @@
 const express = require('express');
 const usersRouter = require('./Routers/userRouter');
 const productRouter = require('./Routers/productRouter');
+const cors = require('cors')
 
 require('dotenv').config();
 require('./Config/database');
 const app = express();
-
+app.use(cors());
 app.use(express.json()); // para poder leer en formato json middenword
 app.use(usersRouter);
 app.use(productRouter);

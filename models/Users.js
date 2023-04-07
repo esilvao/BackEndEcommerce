@@ -91,7 +91,11 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  imagen: {
+    type: String
+  },
   direccionesDespacho: [directionSchema]
+
 
 })
 
