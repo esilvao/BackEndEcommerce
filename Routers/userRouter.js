@@ -25,6 +25,6 @@ usersRouter.route('/users/signin')
 usersRouter.route('/users/verificarUsuario')
     .get(auth,verificarlogin)
 usersRouter.route('/users/myprofile')
-    .put(editUser)
+    .put(auth, editUser)
 
 module.exports = usersRouter;

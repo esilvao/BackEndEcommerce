@@ -9,6 +9,21 @@ const getProduct = async(req,res)=> {
     res.Status(500).json({Status: "false", msj: "No se puede leer los productos"})
   }
 }
+const getProductById = async(req, res) => {
+  const { id } = req.params;
+  try {
+       const miProducto = await Product.findById(id);
+       console.log(miProducto)
+
+      res.json({success: true, msg: "Producto obtenido", info: miProducto})
+
+      console.log(miProducto)
+      
+  } catch (error) {
+      res.status(500).json({success: false, message: error.message})
+  }
+}
+
 
 const createProduct = async(req,res)=> {
   try {
@@ -47,4 +62,4 @@ res.status(500).json({Status: "false", msj: "No se puede actualizar el producto 
 }
     
 
-module.exports ={getProduct,createProduct,updateProduct,deleteProduct}
+module.exports ={getProduct,createProduct,updateProduct,deleteProduct,getProductById}

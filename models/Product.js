@@ -83,8 +83,11 @@ bodega: {
   max: 5,
   min: 5,
   match:[/[a-z0-9]{5}/g]
+},
+image: {
+  type: String,
+  required: true,
 }
-
 })
 
 const Product = mongoose.model('product',productSchema)

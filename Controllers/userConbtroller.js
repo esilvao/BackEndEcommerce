@@ -67,21 +67,18 @@ try {
 
 const editUser= async(req,res)=>{
 try {
- 
   const { id,email } = req.auth
   const contain = req.body;
-  console.log ( "ID ..." + id)
-  console.log ( "email " + email)
   
 const userEdit = await Users.findOne({email: email})
 if (userEdit){
-  throw new Error('El email ya se encuentra registrado')
-  //console.log("usuario registrado")
+  //throw new Error('El email ya se encuentra registrado')
+  console.log("usuario registrado")
 }  
   const updateUser = await Users.findByIdAndUpdate(id, contain, {new: true}).select('-password -salt -isAdmin');
  
-  res.json({success: true, msg: "usuario actualizado", updateUser})
-
+  res.json({success: true, msg: "usuario actualizado", info: updateUser})
+s
 } catch (error) {
   res.status(500).json({
     success: false,
